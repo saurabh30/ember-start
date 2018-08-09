@@ -1,0 +1,20 @@
+<div class="table-responsive">
+    <table class="table table-bordered table-striped ">
+      <thead class="thead-dark">
+        <tr>
+          <th>name</th>
+          <th>contact</th>
+          <th>location</th>
+        </tr>
+      </thead>
+      <tbody>
+          {{#each model as |employee|}}
+            <tr>
+                <td>{{employee.name}}</td>
+                <td>{{employee.contact}}</td>
+                <td>{{employee.location}}</td>
+            </tr>
+          {{/each}}  
+      </tbody>
+    </table>
+  </div>
