@@ -1,9 +1,9 @@
+//import employees from "../app/controllers/employees";
+
 export default function() {
     this.namespace = '/api';
   
-    this.get('/employees', function() {
-      return {
-        data: [{
+    let employees = [{
           type: 'employees',
           id: 11,
           attributes: {
@@ -27,11 +27,18 @@ export default function() {
             name: 'Violet Beauregarde',
             location: 'Portland',
           }
-        }]
-      };
-    });
+        }];
   
-
+  this.get('/employees', function(db, request) {
+    if(request.queryParams.name !== undefined) {
+      let filteredEmployees = employees.filter(function(i) {
+        return i.attributes.name.toLowerCase().indexOf(request.queryParams.name.toLowerCase()) !== -1;
+      });
+      return {data: filteredEmployees };
+    } else {
+      return { data: employees };
+    }
+  });
   // These comments are here to help you get started. Feel free to delete them.
 
   /*

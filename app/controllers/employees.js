@@ -1,9 +1,6 @@
-import Route from '@ember/routing/route';
+import Controller from '@ember/controller';
 
-export default Route.extend({
-    model() {
-        return this.get('store').findAll('employee');
-    },
+export default Controller.extend({
     actions: {
         /* add(){
                 alert(this.get('name'));
@@ -15,7 +12,8 @@ export default Route.extend({
         }, */
         filterByName(param) {
           if (param !== '') {
-            return this.get('store').query('rental', { city: param });
+            return this.get('store').query('employee', { name: param });
+            //return this.get('store').findAll('employee');
           } else {
             return this.get('store').findAll('employee'); 
           }  
