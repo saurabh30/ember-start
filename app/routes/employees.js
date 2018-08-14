@@ -13,13 +13,7 @@ export default Route.extend({
                 location:'noida'
               });
         }, */
-        filterByName(param) {
-          if (param !== '') {
-            return this.get('store').query('rental', { city: param });
-          } else {
-            return this.get('store').findAll('employee'); 
-          }  
-        }
+        
 
     } 
 });
