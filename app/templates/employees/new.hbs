@@ -1,27 +1,21 @@
-{{#bs-modal  as |modal|}}
-  {{#modal.header}}
-  <h4 class="modal-title">Add New Employee</h4>
-  {{/modal.header}}
-  {{#modal.body}}
-  <div class = "form-group">
-    <div class="input-group">
-      <label>Name &nbsp; &nbsp; </label>
-      <input class="form-control" type="text">
-    </div>  
-    <div class="input-group">
-       <label>Contact  &nbsp;</label>
-       <input class="form-control" type="text">
-    </div>
-    <div class="input-group">
-       <label>City &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </label>
-       <input class="form-control" type="text">
-    </div>
-    </div>
-  {{/modal.body}}
-  {{#modal.footer as |footer|}}
-  {{#bs-button  type="danger"}}Oh no, forget it!{{/bs-button}}
-  {{#bs-button  type="success"}}Yeah!{{/bs-button}}
-  {{/modal.footer}}
-{{/bs-modal}}
-            
-  
+{{#bs-modal as |modal|}} {{#modal.header}}
+<h4 class="modal-title">Add New Employee</h4>
+{{/modal.header}} {{#modal.body}}
+<div class="form-group">
+  <div class="input-group">
+    <label>Name &nbsp; &nbsp; </label>
+    {{input class="form-control" type="text" value=eName}}
+  </div>
+  <div class="input-group">
+    <label>Contact &nbsp;</label>
+    {{input class="form-control" type="text" value=eContact}}
+  </div>
+  <div class="input-group">
+    <label>Location </label>
+    {{input class="form-control" type="text" value=eCity}}
+  </div>
+</div>
+{{/modal.body}} {{#modal.footer as |footer|}} 
+{{#link-to 'employees'  class="btn btn-danger"}}Oh no, forget it!{{/link-to}} 
+{{#bs-button  onClick=(action
+'add') class="btn btn-success"}}Yeah!{{/bs-button}} {{/modal.footer}} {{/bs-modal}}
