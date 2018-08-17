@@ -1,0 +1,20 @@
+{{#bs-modal as |modal|}} {{#modal.header}}
+<h4 class="modal-title">Edit Employee</h4>
+{{/modal.header}} {{#modal.body}}
+<div class="form-group">
+  <div class="input-group">
+    <label>Name &nbsp; &nbsp; </label>
+    {{input class="form-control" type="text" value=model.name}}
+  </div>
+  <div class="input-group">
+    <label>Contact &nbsp;</label>
+    {{input class="form-control" type="text" value=model.contact}}
+  </div>
+  <div class="input-group">
+    <label>Location </label>
+    {{input class="form-control" type="text" value=model.location}}
+  </div>
+</div>
+{{/modal.body}} {{#modal.footer as |footer|}} 
+{{#link-to 'employees'  class="btn btn-danger"}}Oh no, forget it!{{/link-to}} 
+{{#bs-button   class="btn btn-success" onClick=(action 'edit')}}Yeah!{{/bs-button}} {{/modal.footer}} {{/bs-modal}}

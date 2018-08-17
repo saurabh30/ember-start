@@ -39,6 +39,14 @@ export default function() {
       return { data: employees };
     }
   });
+  this.post('/employees', (schema, request) => {
+    //const attrs = JSON.parse(request.requestBody).author;
+    console.log(request);  
+    //return schema.authors.create(attrs);
+  });
+  this.get('/employees/:id', function (db,request) {
+    return { data: employees.find((employee) => request.params.id === employee.id)}
+  });
   // These comments are here to help you get started. Feel free to delete them.
 
   /*

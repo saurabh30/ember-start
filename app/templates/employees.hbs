@@ -24,7 +24,7 @@
       <tbody>
         {{#each employees as |employee|}}
           <tr>
-              <td>{{employee.name}}</td>
+              <td>{{#link-to "employees.show" employee}} {{employee.name}}{{/link-to}}</td>
               <td>{{employee.contact}}</td>
               <td>{{employee.location}}</td>
           </tr>
