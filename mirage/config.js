@@ -44,6 +44,11 @@ export default function() {
     console.log(request);  
     //return schema.authors.create(attrs);
   });
+  this.del('/employees/:id', (schema, request) => {
+    let employee = schema.employees.find(request.params.id);
+    employees.posts.delete();
+    employees.delete();
+  });
   this.get('/employees/:id', function (db,request) {
     return { data: employees.find((employee) => request.params.id === employee.id)}
   });

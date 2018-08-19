@@ -9,6 +9,13 @@ export default Controller.extend({
           } else {
             return this.get('store').findAll('employee'); 
           }  
+        },
+        delete (id){
+          var self =this;
+          this.get('store').findRecord('employee', id).then(function(employee){
+            employee.deleteRecord();
+            self.transitionToRoute('employees');
+          });
         }
 
     }  
