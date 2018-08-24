@@ -16,7 +16,8 @@
           {{input class="form-control" type="text" value=employees.location}}
         </div>
       </div>
-     {{/edit-form}}
-     {{#link-to 'employees'  class="btn btn-danger"}}Back{{/link-to}} 
-     {{#bs-button   class="btn btn-success" onClick=(action 'edit')}}Save{{/bs-button}}
+      {{#link-to 'employees'  class="btn btn-danger"}}Back{{/link-to}} 
+     {{#bs-button   class="btn btn-success" onClick=(action 'edit' employees.name employees.contact employees.location)}}Save{{/bs-button}}
  
+     {{/edit-form}}
+     
