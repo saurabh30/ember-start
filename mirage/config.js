@@ -1,5 +1,5 @@
 //import employees from "../app/controllers/employees";
-
+let ID = 14;
 export default function() {
     this.namespace = '/api';
   
@@ -39,19 +39,37 @@ export default function() {
       return { data: employees };
     }
   });
+  
   this.post('/employees', (schema, request) => {
-    //const attrs = JSON.parse(request.requestBody).author;
-    console.log(request);  
-    //return schema.authors.create(attrs);
+    employees.push({
+      type : 'employees',
+      id : ID++,
+      attributes : JSON.parse(request.requestBody).data
+    });
   });
   this.del('/employees/:id', (schema, request) => {
-    let employee = schema.employees.find(request.params.id);
-    employees.posts.delete();
-    employees.delete();
+    
+    let employee = employees.filter(function(employee) {
+      return request.params.id != employee.id
+    });
+    employees =employee;
+    
+  });
+  this.patch('/employees/:id',function (db,request) {
+     employees = employees.filter(function(employee) {
+      return request.params.id != employee.id
+    });
+    employees.push({
+      type : 'employees',
+      id : ID++,
+      attributes : JSON.parse(request.requestBody).data
+    });
   });
   this.get('/employees/:id', function (db,request) {
-    return { data: employees.find((employee) => request.params.id === employee.id)}
-  });
+      console.log(typeof(request.params.id));
+
+    return { data: employees.find((employee) => request.params.id == employee.id)}
+  });  
   // These comments are here to help you get started. Feel free to delete them.
 
   /*
