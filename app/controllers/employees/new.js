@@ -4,15 +4,12 @@ export default Controller.extend({
     actions:{
         add(){
             var employee= this.get('store').createRecord('employee', {
-            id:ID++,    
-            contact:this.get('eContact'),
-            name :this.get('eName'),
-            location:this.get('eCity')
+                name: this.get('eName'),
+                contact: this.get('eContact'),
+                location: this.get('eLocation'),
             });
+            employee.save();
             this.transitionToRoute('employees');
-            //employee.save();
-
-            
         }
     }
 });

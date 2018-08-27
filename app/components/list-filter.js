@@ -2,6 +2,7 @@ import Component from '@ember/component';
 
 export default Component.extend({
     value:'',
+    store: Ember.inject.service(),
 
     init() {
       this._super(...arguments);

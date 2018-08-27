@@ -41,11 +41,12 @@ export default function() {
   });
   
   this.post('/employees', (schema, request) => {
-    employees.push({
+     employees.push({
       type : 'employees',
       id : ID++,
-      attributes : JSON.parse(request.requestBody).data
-    });
+      attributes : JSON.parse(request.requestBody).data.attributes
+    }); 
+    return {data:employees[employees.length-1]}
   });
   this.del('/employees/:id', (schema, request) => {
     
@@ -56,18 +57,38 @@ export default function() {
     
   });
   this.patch('/employees/:id',function (db,request) {
-     employees = employees.filter(function(employee) {
+     /* employees = employees.map(function(employee) {
+         if( request.params.id == employee.id ){
+            return {
+              type : 'employees',
+              id : employee.id,
+              attributes : JSON.parse(request.requestBody).data.attributes
+            } 
+         }
+         else return employee;
+     }); */
+     /* for (var i = 0; i<employees.length;i++){
+       var employee = employees[i] ;
+       
+       if(employee.id ==request.params.id){
+           employees[i].attributes = 
+             JSON.parse(request.requestBody).data.attributes;
+           
+       }
+       return {data:employees[i]};
+     } */
+     let employee = employees.filter(function(employee) {
       return request.params.id != employee.id
     });
+    employees =employee;
     employees.push({
       type : 'employees',
-      id : ID++,
-      attributes : JSON.parse(request.requestBody).data
-    });
+      id : request.params.id,
+      attributes : JSON.parse(request.requestBody).data.attributes
+    }); 
+    return {data:employees[employees.length-1]}
   });
   this.get('/employees/:id', function (db,request) {
-      console.log(typeof(request.params.id));
-
     return { data: employees.find((employee) => request.params.id == employee.id)}
   });  
   // These comments are here to help you get started. Feel free to delete them.

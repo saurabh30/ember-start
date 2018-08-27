@@ -10,10 +10,9 @@ export default Controller.extend({
           }  
         },
         delete (id){
-          var self =this;
-          this.get('store').findRecord('employee', id).then(function(employee){
-            employee.destroyRecord();
-            self.transitionToRoute('employees');
+          this.get('store').findRecord('employee', id, { backgroundReload: false }).then(function(employee){
+            employee.deleteRecord();
+            employee.save();
           });
         }
 
