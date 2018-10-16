@@ -1,0 +1,27 @@
+{{#list-filter
+    filter=(action 'filterByName')
+    as |employees|}}
+    <div class="table-responsive">
+    <table class="table table-bordered table-condensed table-hover ">
+      <thead class="thead-light">
+        <tr>
+          <th>Name</th>
+          <th>Contact</th>
+          <th>City</th>  
+        </tr>
+        </thead>  
+      <tbody>
+        {{#each employees as |employee|}}
+          <tr>
+              <td> <button class="btn btn-sm btn-danger float-right" onClick={{action 'delete' employee.id}}>Delete</button>
+                {{#link-to "employees.show" employee }}{{employee.name}}{{/link-to}}
+               </td>
+              <td>{{employee.contact}}</td>
+              <td>{{employee.location}}</td>
+          </tr>
+        {{/each}}  
+       </tbody>
+    </table>
+    </div>
+{{/list-filter}}
+{{#link-to "employees.new" class="btn btn-primary"}}New{{/link-to}}

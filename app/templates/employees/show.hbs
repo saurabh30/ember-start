@@ -1,0 +1,23 @@
+
+    {{#edit-form  
+      showData=(action 'show') 
+      as |employees|}}
+      <div class="form-group">
+        <div class="input-group">
+          <label>Name &nbsp; &nbsp; </label>
+          {{input class="form-control" type="text" value=employees.name}}
+        </div>
+        <div class="input-group">
+          <label>Contact &nbsp;</label>
+          {{input class="form-control" type="text" value=employees.contact}}
+        </div>
+        <div class="input-group">
+          <label>Location </label>
+          {{input class="form-control" type="text" value=employees.location}}
+        </div>
+      </div>
+      {{#link-to 'employees'  class="btn btn-danger"}}Back{{/link-to}} 
+     {{#bs-button   class="btn btn-success" onClick=(action 'edit' employees.name employees.contact employees.location)}}Save{{/bs-button}}
+ 
+     {{/edit-form}}
+     
